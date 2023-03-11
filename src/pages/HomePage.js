@@ -15,7 +15,10 @@ const HomePage = ({ data }) => {
   };
   // Search for blog by category
   const handleSearchResults = () => {
-    //handle search inputs
+    const filtered = blogs.filter((blog) => {
+      return blog.title.toLowerCase().includes(searchKey.toLowerCase());
+    });
+    setBlogs(filtered);
   };
   // Clear search and show all blogs
   const handleClearSearch = () => {
@@ -35,6 +38,8 @@ const HomePage = ({ data }) => {
   const BlogContent = (id) => {
     data(id);
   }
+
+  
   return (
     <div>
       {/* Page Header */}
