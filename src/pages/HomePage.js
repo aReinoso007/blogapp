@@ -3,7 +3,7 @@ import EmptyList from '../components/EmptyList';
 import BlogList from '../components/BlogList';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-import { blogList } from '../config/Api';
+import APIService from '../config/Api';
 
 const HomePage = ({ data }) => {
   const [blogs, setBlogs] = useState([]);
@@ -22,24 +22,29 @@ const HomePage = ({ data }) => {
   };
   // Clear search and show all blogs
   const handleClearSearch = () => {
-    blogList().then((res) => {
-      setBlogs(res);
-    })
+    APIService.getAllBlogs().then((res) => {
+      setBlogs(res.data)
+    }).catch(function (ex) {
+      console.log('Response parsing failed. Error: ', ex);
+    });
     setSearchKey("");
   };
 
   useEffect(() => {
-    blogList().then((res) => {
-        setBlogs(res);
-    })
-} , []);
+    APIService.getAllBlogs().then((res) => {
+      console.log('res ',res)
+      setBlogs(res.data)
+    }).catch(function (ex) {
+      console.log('Response parsing failed. Error: ', ex);
+    });
+  }, []);
 
   // function to get selected blog content
   const BlogContent = (id) => {
     data(id);
   }
 
-  
+
   return (
     <div>
       {/* Page Header */}
