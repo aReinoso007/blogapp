@@ -2,12 +2,12 @@ import React from 'react';
 import '../index.css';
 const Header = () => (
   <header className='home-header'>
-    <h2>My Personal Blog</h2>
+    <h2>Blog Project</h2>
     <h1>
-      <span>"</span> Take a look at my Content <span>"</span>
+      <span>"</span> Listado de nuestros blogs<span>"</span>
     </h1>
     <p>
-      Read, enjoy <br /> and contribute.
+      Lee, disfruta <br /> y expresate.
     </p>
   </header>
 );

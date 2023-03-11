@@ -1,11 +1,11 @@
-import {React,  useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import EmptyList from '../components/EmptyList';
 import BlogList from '../components/BlogList';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import { blogList } from '../config/Api';
 
-const HomePage = ({data}) => {
+const HomePage = ({ data }) => {
   const [blogs, setBlogs] = useState([]);
   const [searchKey, setSearchKey] = useState('');
   // Search submit
@@ -15,7 +15,7 @@ const HomePage = ({data}) => {
   };
   // Search for blog by category
   const handleSearchResults = () => {
-   //handle search inputs
+    //handle search inputs
   };
   // Clear search and show all blogs
   const handleClearSearch = () => {
@@ -25,10 +25,16 @@ const HomePage = ({data}) => {
     setSearchKey("");
   };
 
+  useEffect(() => {
+    blogList().then((res) => {
+        setBlogs(res);
+    })
+} , []);
+
   // function to get selected blog content
- const BlogContent = (id) => {
-  data(id);
-}
+  const BlogContent = (id) => {
+    data(id);
+  }
   return (
     <div>
       {/* Page Header */}
@@ -41,7 +47,7 @@ const HomePage = ({data}) => {
         handleSearchKey={(e) => setSearchKey(e.target.value)}
       />
       {/* Blog List & Empty View */}
-      {!blogs.length ? <EmptyList /> : <BlogList blogs={blogs} content = {BlogContent}/>}
+      {!blogs.length ? <EmptyList /> : <BlogList blogs={blogs} content={BlogContent} />}
     </div>
   );
 };
