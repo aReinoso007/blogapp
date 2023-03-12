@@ -15,7 +15,7 @@ const Blog = ({content}) => {
       <div className='blog-wrap'>
         <header>
           <p className='blog-date'>Published {content.createdAt}</p>
-          <h1>{content.title}</h1>
+          <h1 typeof='input'>{content.title}</h1>
           <div className='blog-subCategory'>
             
               <div>

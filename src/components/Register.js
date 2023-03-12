@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "../styles/Register.css"
+import { Link } from "react-router-dom";
 
 class Register extends Component {
     constructor(props) {
@@ -44,6 +45,8 @@ class Register extends Component {
     render() {
         return (
             <section className="register-container">
+                <Link to="/" relative="path"><span> &#8592;</span> <span>Regresar</span></Link>
+                <br />
                 <h2>Register</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>

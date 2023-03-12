@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/Login.css"
 import { Link } from "react-router-dom";
-
+import { signIn } from "../config/Api";
 class Login extends Component {
 
     constructor(props) {
@@ -16,48 +16,66 @@ class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log("email: ", this.state.email);
-        console.log("Password: ", this.state.password);
+        signIn(this.state).then((res)=>{
+            if(res.status === 200){
+                //go to home
+            }else{
+                //show error message
+            }
+        })
     }
 
     render() {
         return (
-           <section>
-            <h1>Login</h1>
-             <form onSubmit={this.handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="text"
-                        id="email"
-                        value={this.state.email}
-                        autoComplete="on"
-                        onChange={(e) => this.setState({ email: e.target.value })}
-                        required
-                        className="input-field"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password </label>
-                    <input 
-                        className="input-field"
-                        type="password"
-                        id="password"
-                        value={this.state.password}
-                        autoComplete="off"
-                        required
-                        onChange={(e) => this.setState({ password: e.target.value })}
-                    />
-                </div>
-                <button className="submit-btn" type="submit">Log In</button>
-                <p>
-                No tienes cuenta? <br />
-                <span className="line">
-                    <Link to="/signup" relative="path">Registrarse</Link>
-                </span>
-            </p>
-            </form>
-           </section>
+            <>
+                {this.state.success ?
+                    (
+                        <section>
+                            <h1>Has iniciado sesion!</h1>
+                            <br />
+                            <p>
+                                <Link to="/home" relative="path">Ir a blogs</Link>
+                            </p>
+                        </section>
+                    ) : (
+                        <section>
+                            <h1>Login</h1>
+                            <form onSubmit={this.handleSubmit}>
+                                <div>
+                                    <label htmlFor="email">Email</label>
+                                    <input
+                                        type="text"
+                                        id="email"
+                                        value={this.state.email}
+                                        autoComplete="on"
+                                        onChange={(e) => this.setState({ email: e.target.value })}
+                                        required
+                                        className="input-field"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="password">Password </label>
+                                    <input
+                                        className="input-field"
+                                        type="password"
+                                        id="password"
+                                        value={this.state.password}
+                                        autoComplete="off"
+                                        required
+                                        onChange={(e) => this.setState({ password: e.target.value })}
+                                    />
+                                </div>
+                                <button className="submit-btn" type="submit">Log In</button>
+                                <p>
+                                    No tienes cuenta? <br />
+                                    <span className="line">
+                                        <Link to="/signup" relative="path">Registrarse</Link>
+                                    </span>
+                                </p>
+                            </form>
+                        </section>
+                    )}
+            </>
         );
     }
 
