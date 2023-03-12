@@ -2,7 +2,7 @@ import axios from 'axios'
 const BASE_URL="http://localhost:500/api/v1/blog/";
 
 export const signUp = (newUser) =>{
-    return axios.post(BASE_URL+'registro', newUser);
+    return axios.post(BASE_URL+'user/registro', newUser);
 }
 
 export const signIn = (credentials ) =>{
@@ -10,11 +10,9 @@ export const signIn = (credentials ) =>{
 }
 
 export const blogList = async ()=>{
-    const url = "http://localhost:500/api/v1/blog/posts/";
-    return axios.get(url).then((res)=>{
+    return axios.get(BASE_URL+'posts/').then((res)=>{
         return res.data;
     })
-
 }
 
 

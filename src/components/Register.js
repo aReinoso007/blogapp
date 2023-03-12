@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../styles/Register.css"
 import { Link } from "react-router-dom";
-
+import { signUp } from "../config/Api";
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -29,17 +29,11 @@ class Register extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
-        axios
-            .post("http://localhost:500/api/v1/blog/user/registro", this.state)
-            .then((response) => {
-                console.log(response.data);
-                if (response.status === 201) {
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        signUp(this.state).then((res) => {
+            console.log('res ', res);
+        }).catch((error) => {
+            console.error(error)
+        })
     }
 
     render() {
