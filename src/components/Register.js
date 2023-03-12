@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../styles/Register.css"
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -13,68 +15,89 @@ class Register extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value,
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("Name: ", this.state.name);
-    console.log("Last Name: ", this.state.lastName);
-    console.log("Username: ", this.state.username);
-    console.log("Email: ", this.state.email);
-    console.log("Password: ", this.state.password);
+
+    axios
+      .post("http://localhost:500/api/v1/blog/user/registro", this.state)
+      .then((response) => {
+        console.log(response.data);
+        if(response.status === 201){
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
     return (
       <div className="register-container">
+        <h2>Register</h2>
         <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            id="name"
-            value={this.state.name}
-            onChange={(e) => this.setState({ name: e.target.value })}
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name: </label>
-          <input
-            type="text"
-            id="lastName"
-            value={this.state.lastName}
-            onChange={(e) => this.setState({ lastName: e.target.value })}
-          />
-        </div>
-        <div>
-          <label htmlFor="username">Username: </label>
-          <input
-            type="text"
-            id="username"
-            value={this.state.username}
-            onChange={(e) => this.setState({ username: e.target.value })}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            id="email"
-            value={this.state.email}
-            onChange={(e) => this.setState({ email: e.target.value })}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            id="password"
-            value={this.state.password}
-            onChange={(e) => this.setState({ password: e.target.value })}
-          />
-        </div>
-        <button type="submit">Signup</button>
-      </form>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Last Name:
+            <input
+              type="text"
+              name="lastName"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Username:
+            <input
+              type="text"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </label>
+          <br />
+          <button type="submit">Register</button>
+        </form>
       </div>
     );
   }
