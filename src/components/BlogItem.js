@@ -5,7 +5,7 @@ import '../index.css';
 const BlogItem = ({blog, content}) => {
   return (
     <div className='blogItem-wrap' key={blog.uid}>
-      <img className='blogItem-cover' src="https://revenuearchitects.com/wp-content/uploads/2017/02/Blog_pic-1030x584.png" alt='cover' />
+      <img className='blogItem-cover' src="https://static.vecteezy.com/system/resources/previews/009/198/869/non_2x/simple-book-icon-illustration-isolated-on-white-background-free-vector.jpg" alt='cover' />
       <Chip label={blog.title} />
       <h3>{blog.title}</h3>
       <p className='blogItem-desc'>{blog.content}</p>

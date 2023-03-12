@@ -1,12 +1,21 @@
 import axios from 'axios'
 
-const BLOG_API_URL="http://localhost:500/api/v1/blog/";
+const BASE_URL="http://localhost:500/api/v1/blog/";
 
-class APIService{
-    
-
-    getAllBlogs(){
-       return axios.get(BLOG_API_URL+'posts/');
-    }
+export const signUp = (newUser) =>{
+    return axios.post(BASE_URL+'registro', newUser);
 }
-export default new APIService();
+
+export const blogList = async ()=>{
+    const url = "http://localhost:500/api/v1/blog/posts/";
+    return axios.get(url).then((res)=>{
+        return res.data;
+    })
+
+}
+
+
+export const getMyPosts = (uid) =>{
+    return axios.get(BASE_URL+'');
+}
+
