@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "../styles/Register.css"
 import { Link } from "react-router-dom";
 import { signUp } from "../config/Api";

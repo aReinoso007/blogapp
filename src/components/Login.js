@@ -11,7 +11,7 @@ const Login = () => {
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
-    const [password, setpassword] = useState('');
+    const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -30,7 +30,7 @@ const Login = () => {
                 console.log('res ', res);
                 setAuth({ email, password });
                 setEmail('');
-                setpassword('');
+                setPassword('');
                 setSuccess(true);
             })
         } catch (err) {
@@ -85,7 +85,7 @@ const Login = () => {
                                     value={password}
                                     autoComplete="off"
                                     required
-                                    onChange={(e) => setpassword(e.target.value)}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                             <button className="submit-btn" type="submit">Log In</button>
