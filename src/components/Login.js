@@ -25,26 +25,20 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            signIn({ email: email, password: password }).then((res) => {
-                console.log('res ', res);
-                setAuth({ email, password });
+        signIn({ email: email, password: password }).then((res) => {
+            if (res !== undefined) {
+                console.log('res ', res.data.uid);
+                const uid = res.data.uid;
+                setAuth({ email, password, uid });
                 setEmail('');
                 setPassword('');
                 setSuccess(true);
-            })
-        } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
+            }else{
+                alert('Datos incorrectos')
+                setSuccess(false);
             }
-            errRef.current.focus();
-        }
+            
+        })
     }
 
     return (

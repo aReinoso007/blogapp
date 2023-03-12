@@ -5,6 +5,7 @@ import '../index.css';
 import { Link } from 'react-router-dom';
 
 const Blog = ({content}) => {
+  console.log('content ', content)
  
   return (
     <>
