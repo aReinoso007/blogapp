@@ -15,6 +15,10 @@ export const blogList = async ()=>{
     })
 }
 
+export const AddBlog = (data) =>{
+    return axios.post(BASE_URL+'posts/', data)
+}
+
 
 export const getMyPosts = (uid) =>{
     return axios.get(BASE_URL+'');
