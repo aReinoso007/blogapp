@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { AddBlog, GetBlogByUid, UpdateBlog } from "../config/Api";
-import { useNavigate } from "react-router-dom";
+import { UpdateBlog } from "../config/Api";
+
 class EditPost extends React.Component{
 
   constructor(props){

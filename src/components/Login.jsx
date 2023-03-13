@@ -14,7 +14,6 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         emailRef.current.focus();
@@ -34,11 +33,9 @@ const Login = () => {
                 setAuth({ email, password, uid, names });
                 setEmail('');
                 setPassword('');
-                setSuccess(true);
                 navigate('/home')
             } else {
                 alert('Datos incorrectos')
-                setSuccess(false);
             }
 
         })

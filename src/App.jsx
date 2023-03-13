@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import EditPost from './pages/EditPost';
 import RequireAuth from "./components/RequireAuth";
 import AddPost from "./pages/AddPost";
+import "./index.css"
 
 function App() {
   const [getBlogContent, setGetBlogContent] = useState([]);

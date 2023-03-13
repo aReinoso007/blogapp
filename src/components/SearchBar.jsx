@@ -1,11 +1,8 @@
 import React from 'react';
 import '../index.css';
 import '../styles/SearchBar.css'
-import { useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom';
 const SearchBar = ({ formSubmit, value, handleSearchKey, clearSearch, handleAdd }) => {
-
-  const navigate = useNavigate();
 
   return (
     <div className='searchBar-wrap'>
