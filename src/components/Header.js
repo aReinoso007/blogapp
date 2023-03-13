@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className='home-header'>
       <h1>Blog Project</h1>
-      <h2>Bienvenida {auth.names}</h2>
+      <h2>Bienvenido {auth.names}</h2>
     </header>
   )
 }

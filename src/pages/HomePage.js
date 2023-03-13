@@ -8,7 +8,7 @@ import { blogList } from '../config/Api';
 const HomePage = ({ data }) => {
   const [blogs, setBlogs] = useState([]);
   const [searchKey, setSearchKey] = useState('');
-  
+
   const handleSearchBar = (e) => {
     e.preventDefault();
     handleSearchResults();
@@ -36,7 +36,6 @@ const HomePage = ({ data }) => {
     data(id);
   }
 
-  
   return (
     <div>
       <Header />

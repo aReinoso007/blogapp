@@ -19,3 +19,5 @@ class AddPost extends React.Component{
     }
 
 }
+
+export default AddPost;
