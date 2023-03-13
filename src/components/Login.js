@@ -29,7 +29,8 @@ const Login = () => {
             if (res !== undefined) {
                 console.log('res ', res.data.uid);
                 const uid = res.data.uid;
-                setAuth({ email, password, uid });
+                const names = res.data.name+' '+res.data.lastName;
+                setAuth({ email, password, uid, names });
                 setEmail('');
                 setPassword('');
                 setSuccess(true);

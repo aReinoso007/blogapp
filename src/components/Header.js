@@ -1,8 +1,14 @@
 import React from 'react';
 import '../index.css';
-const Header = () => (
-  <header className='home-header'>
-    <h2>Blog Project</h2>
-  </header>
-);
+import useAuth from "../hooks/useAuth";
+
+const Header = () => {
+  const {  auth } =  useAuth();
+  return (
+    <header className='home-header'>
+      <h1>Blog Project</h1>
+      <h2>Bienvenida {auth.names}</h2>
+    </header>
+  )
+}
 export default Header;
