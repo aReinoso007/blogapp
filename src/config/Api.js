@@ -10,7 +10,7 @@ export const signIn = (credentials ) =>{
 }
 
 export const blogList = async ()=>{
-    return axios.get(BASE_URL+'posts/').then((res)=>{
+    return axios.get(BASE_URL+'posts/all').then((res)=>{
         return res.data;
     })
 }

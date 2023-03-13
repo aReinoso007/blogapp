@@ -8,11 +8,12 @@ const BlogItem = ({blog, content}) => {
       <img className='blogItem-cover' src="https://static.vecteezy.com/system/resources/previews/009/198/869/non_2x/simple-book-icon-illustration-isolated-on-white-background-free-vector.jpg" alt='cover' />
       <Chip label={blog.title} />
       <h3>{blog.title}</h3>
-      <p className='blogItem-desc'>{blog.content}</p>
+      <p className='blogItem-desc'>{blog.contenido}</p>
       <footer>
         <div className='blogItem-author'>
           <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" alt='avatar' />
           <div>
+            <p>{blog.author}</p>
             <p>{blog.createdAt}</p>
             <p>{blog.status}</p>
           </div>

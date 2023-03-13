@@ -15,17 +15,17 @@ const Blog = ({content}) => {
     {content ? (
       <div className='blog-wrap'>
         <header>
-          <p className='blog-date'>Published {content.createdAt}</p>
-          <h1>{content.title}</h1>
+        <h1>{content.title}</h1>
+          <p className='blog-date'>Publicado {content.createdAt}</p>
           <div className='blog-subCategory'>
             
               <div>
-                <Chip label={content.title} />
+                <Chip label={content.author} />
               </div>
             
           </div>
         </header>
-        <div className='blog-content' dangerouslySetInnerHTML={{__html: content.content}}></div>
+        <div className='blog-content' dangerouslySetInnerHTML={{__html: content.contenido}}></div>
       </div>
     ) : (
       <EmptyList />
