@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Register.css"
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { signUp } from "../config/Api";
 class Register extends Component {
     constructor(props) {
@@ -12,6 +12,7 @@ class Register extends Component {
             username: "",
             email: "",
             password: "",
+            shouldRedirect: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,16 +26,26 @@ class Register extends Component {
         });
     }
 
+
     handleSubmit(event) {
         event.preventDefault();
+        this.setState({shouldRedirect: true})
         signUp(this.state).then((res) => {
-            console.log('res ', res);
+            alert('Felicidades')
         }).catch((error) => {
             console.error(error)
         })
     }
 
     render() {
+        if(this.state.shouldRedirect){
+            return (
+                <div>
+                    Ya estas registrado, ingresa tus credenciales para ver los blogs
+                    <a href="/login">Login</a>
+                </div>
+            )
+        }
         return (
             <section className="register-container">
                 <Link to="/" relative="path"><span> &#8592;</span> <span>Regresar</span></Link>
