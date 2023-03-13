@@ -1,5 +1,4 @@
 import React from 'react';
-import '../index.css';
 import useAuth from "../hooks/useAuth";
 
 const Header = () => {

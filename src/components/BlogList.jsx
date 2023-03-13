@@ -1,6 +1,5 @@
 import React from 'react';
 import BlogItem from './BlogItem';
-import '../index.css';
 
 const BlogList = ({ blogs, content }) => {
   return (

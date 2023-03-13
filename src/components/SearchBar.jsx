@@ -1,5 +1,4 @@
 import React from 'react';
-import '../index.css';
 import '../styles/SearchBar.css'
 import {Link} from 'react-router-dom';
 const SearchBar = ({ formSubmit, value, handleSearchKey, clearSearch, handleAdd }) => {
