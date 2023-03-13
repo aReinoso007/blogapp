@@ -55,8 +55,8 @@ const AddPost =()=>{
                     <textarea 
                         name="content"
                         value={content}
-                        required
                         onChange={(e)=> setContent(e.target.value)}
+                        required
                     />
                 </label>
                 <button>Guardar</button>

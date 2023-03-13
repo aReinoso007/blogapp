@@ -18,6 +18,9 @@ const BlogItem = ({blog, content}) => {
             <p>{blog.status}</p>
           </div>
         </div>
+        <Link className='blogItem-link' to={`/home/blog/edit/${blog.uid}`} onClick={()=>{content(blog)}}>
+          🖊
+        </Link>
         <Link className='blogItem-link' to={`/home/blog/${blog.uid}`} onClick={()=>{content(blog)}}>
           ➝
         </Link>

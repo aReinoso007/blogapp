@@ -1,35 +1,80 @@
-import {React} from 'react';
-import Chip from '../components/Chip';
-import EmptyList from '../components/EmptyList';
-import '../index.css';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { AddBlog, GetBlogByUid, UpdateBlog } from "../config/Api";
+import { useNavigate } from "react-router-dom";
+class EditPost extends React.Component{
 
-const Blog = ({content}) => {
- 
-  return (
-    <>
-    <Link className='blog-goBack' to='/home'>
-      <span> &#8592;</span> <span>Go Back</span>
-    </Link>
-    {content ? (
-      <div className='blog-wrap'>
-        <header>
-          <p className='blog-date'>Published {content.createdAt}</p>
-          <h1 typeof='input'>{content.title}</h1>
-          <div className='blog-subCategory'>
-            
-              <div>
-                <Chip label={content.title} />
-              </div>
-            
-          </div>
-        </header>
-        <div className='blog-content' dangerouslySetInnerHTML={{__html: content.content}}></div>
+  constructor(props){
+    super(props)
+    this.state = {
+      title: props.title,
+      content: props.contenido,
+      uid: props.uid,
+      newTitle: "",
+      newContent: ""
+    }
+    console.log(this.props)
+  }
+  
+
+  handleBlogSubmit = async (e) => {
+    e.preventDefault();
+   UpdateBlog({ uid: this.state.uid, title: this.state.title, content: this.state.content }).then((res) => {
+      this.setState({
+        title: res.data.title,
+        content: res.data.content
+      })
+    })
+  }
+
+  handleContentChange(event){
+    this.setState({content: event.target.value})
+  }
+
+  handleTitleChange(event){
+    this.setState({title: event.target.value})
+  }
+
+  componentDidMount(){
+    this.setState({
+      title: this.props.contenido.title,
+      content: this.props.contenido.contenido,
+      uid: this.props.contenido.uid,
+    })
+  }
+  
+
+  render(){
+    return (
+      <div>
+        <Link to="/home" relative="path"><span> &#8592;</span> <span>Regresar</span></Link>
+        <form onSubmit={this.handleBlogSubmit}>
+          <h1>Hola {this.props.contenido.author}</h1>
+          <h2>Edita el contenido de este blog</h2>
+          <br />
+          <label htmlFor="title">
+            Titulo {this.props.title}
+            <input
+              type="text"
+              name="newTitle"
+              value={this.state.title}
+              onChange={this.handleTitleChange.bind(this)}
+            />
+          </label>
+          <label>
+            Contenido
+            <textarea
+              type="textarea"
+              name="newContent"
+              value={this.state.content}
+              onChange={this.handleContentChange.bind(this)}
+            />
+          </label>
+          <button>Guardar</button>
+        </form>
       </div>
-    ) : (
-      <EmptyList />
-    )}
-  </>
-  );
-};
-export default Blog;
+    );
+  }
+}
+
+export default EditPost;

@@ -27,7 +27,7 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="/home" element={<HomePage data={getData} />} />
             <Route path="/home/blog/:id" element={<BlogPost content={getBlogContent} />} />
-            <Route path="/home/blog/edit/:id" element={<EditPost content={getBlogContent} />} />
+            <Route path="/home/blog/edit/:id" element={<EditPost contenido={getBlogContent} />} />
             <Route path="/home/blog/add" element={<AddPost />}/>
           </Route>
         </Routes>

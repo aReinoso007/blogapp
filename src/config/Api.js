@@ -19,6 +19,13 @@ export const AddBlog = (data) =>{
     return axios.post(BASE_URL+'posts/', data)
 }
 
+export const GetBlogByUid = (uid) =>{
+    return axios.get(BASE_URL+'posts/'+uid)
+}
+
+export const UpdateBlog = (data) =>{
+    return axios.put(BASE_URL+'posts/update', data)
+}
 
 export const getMyPosts = (uid) =>{
     return axios.get(BASE_URL+'');
